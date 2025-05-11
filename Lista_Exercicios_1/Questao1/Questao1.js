@@ -1,5 +1,5 @@
 /**
- * 01 - Escreva um programa que recebe um número inteiro e verifica se ele é par ou ímpar
+ * 1 - Escreva um programa que recebe um número inteiro e verifica se ele é par ou ímpar
  * utilizando uma estrutura de controle if.
  */
 
