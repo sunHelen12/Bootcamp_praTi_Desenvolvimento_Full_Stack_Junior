@@ -17,8 +17,10 @@ Este repositório contém as atividades realizadas durante o **Programa de Desen
 git clone https://github.com/seu-usuario/nome-do-repo.git
 cd nome-do-repo
 ```
+### 2. Instale o Node.js
+Caso ainda não tenha, instale o Node.js acessando: https://nodejs.org
 
-### 2. Instale as dependências
+### 3. Instale as dependências
 
 Alguns códigos utilizam a biblioteca `prompt-sync` para entrada de dados via terminal. Para instalar essa dependência, rode o seguinte comando na pasta do projeto:
 
@@ -26,7 +28,7 @@ Alguns códigos utilizam a biblioteca `prompt-sync` para entrada de dados via te
 npm install prompt-sync
 ```
 
-## 3. Execute os arquivos JavaScript
+## 4. Execute os arquivos JavaScript
 
 Para executar um dos scripts, use o comando:
 
