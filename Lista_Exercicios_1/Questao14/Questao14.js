@@ -1,22 +1,20 @@
 /**
- * Fazer um algoritmo para receber números decimais até que o usuário digite 0 e fazer
- * a média aritmética desses números.
+ * 14 - Crie um programa que calcula o fatorial de um número fornecido pelo usuário
+ * utilizando um loop for ou while.
  */
 
 const prompt = require('prompt-sync')();
 
-let cont = 0;
-let soma = 0;
-let num = 1;
+let num = parseFloat(prompt('Digite um número para fatorar: '));
+let resultado = 1;
+let cont = num;
 
-
-while(num != 0){
-    num = parseFloat(prompt('Digite um número: '));
-    soma += num;
-   if(num != 0) cont++;
+while(cont > 1){    
+    resultado *=  cont;
+    cont--;   
 }
 
-console.log(`Média Aritmética = ${cont > 0 ? soma / cont : 0}`)
+console.log(`O fatorial de ${num} é: ${resultado}`);
 
 
 
