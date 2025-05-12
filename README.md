@@ -39,7 +39,7 @@ node nome-do-arquivo.js
 **Exemplo:**
 
 ```bash
-node exercicio01.js
+node Questao1.js
 ```
 
 
