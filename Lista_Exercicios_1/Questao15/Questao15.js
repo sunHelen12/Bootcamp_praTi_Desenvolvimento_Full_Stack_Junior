@@ -3,7 +3,6 @@
  * Fibonacci utilizando um loop for.
  */
 
-
 let num = 10;
 let numInicial = 0;
 let segundoNum = 1;
