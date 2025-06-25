@@ -8,6 +8,13 @@ Este repositório contém as atividades realizadas durante o **Programa de Desen
 - **Node.js** – ambiente de execução para JavaScript no backend.
 - **JavaScript** – linguagem de programação.
 
+## ⚙️ Lista de Exercícios 1
+* Lógica de Programação
+
+## ⚙️ Lista de Exercícios 2
+* Estruturas de Controle Avançadas
+* Funções e Recursão
+* Arrays e Objetos Complexos
 
 ## ⚙️ Como Executar os Códigos
 
