@@ -27,3 +27,6 @@ function frase(){
 const fraseDebounce = debounce(frase, 1000);
 
 fraseDebounce();
+fraseDebounce();
+fraseDebounce();
+fraseDebounce();
