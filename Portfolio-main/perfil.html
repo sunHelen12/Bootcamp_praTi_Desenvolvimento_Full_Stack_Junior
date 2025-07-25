@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!--linguagem do arquivio-->
+<head>
+    <meta charset="UTF-8"> <!--para caracteres especiais-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--configuração para o edge, usar a versao recente no navegador-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--analisa a tela do dispositivo para adequar a pagina ao layout-->
+    <title>Portfólio</title>
+    <link rel="stylesheet" href="./estilos/style.css" > <!--para linkar html e css-->
+</head>
+
+<body>
+   <header class="cabecalho"> 
+        <nav class="cabecalho__menu"> <!--navegar nos links que serão depositados no cabeçalho-->
+            <a class="cabecalho__menu__link" href="perfil.html">Home</a>
+            <a class="cabecalho__menu__link" href="about.html">Sobre mim</a>
+        </nav>
+   </header> <!--menu/cabeçalho--> 
+   <main class="apresentacao"> <!--conteudo principal onde ficara o titulo, botões-->
+    <section class="apresentacao__conteudo">
+        <h1 class="apresentacao__conteudo__titulo">Desenvolvedora de Softwares,<strong class="titulo-destaque"> uma profissional de qualidade!</strong></h1> <!--<strong> para destacar o texto-->
+        <p class="apresentacao__conteudo__texto">Olá! Sou <strong class= "apresentacao__conteudo__nome">Helen Santos</strong>, iniciante na área de TI. Atualmente me graduando em Sistemas de Informação. Tenho entusiasmo por muitas linguagens de programação como Java e Python. Além delas, venho aperfeiçoando minhas habilidades em HTML e CSS. Desejo futuramente me tornar uma Desenvolvedora Full-Stack me especializando nas duas vertentes mais procuradas pelo mercado.</p>
+        <div class="apresentacao__links"> <!--para colocar um divisao entre os botões/textos-->
+            <h2 class=" apresentacao__links__subtitulo">Acesse minhas redes: </h2>
+            <a class="apresentacao__links__link" href="https://www.linkedin.com/in/helen-santos-dev"> 
+                <img src="./assets/linkedin.png" alt="Ícone do Linkedin"> Linkedin
+            </a> <!--tag ancora para redirecionar a um outro site-->
+            <a class="apresentacao__links__link" href="https://github.com/dashboard">
+                <img src="./assets/github.png" alt="Ícone do GitHub"> GitHub
+            </a>
+        </div> 
+    </section> 
+    <img  class="apresentacao__imagem" src="./img/helen.svg" alt="Foto de Helen Santos">
+   </main> 
+   <footer class="rodape">
+        <p>Desenvolvido por Helen Santos.</p>
+   </footer> <!--rodapé da página-->
+</body>
+</html>
+
