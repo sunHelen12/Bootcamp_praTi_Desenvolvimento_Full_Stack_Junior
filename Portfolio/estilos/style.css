@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap'); /*importa-se a fonte do site google fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    /*definindo as variaveis*/
+    --cor-primaria: #240A34; 
+    --cor-secundaria:#FFEDD8;
+    --cor-terciaria:#EABE6C;
+    
+    --cor-primaria-hover: #E0A75E;
+    --cor-secundaria-hover: #240A34;
+    --cor-terciaria-hover: #FF7F3E;
+
+    --fonte-primaria: 'Krona One', sans-serif;
+    --font-secundaria: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /* height: 100vh; */
+    box-sizing: border-box;
+    /* background-color: #000000; */
+    background-color: var(--cor-primaria);
+    /* color: #F6F6F6;  cor do texto da pagina */
+    color: var(--cor-secundaria);
+}
+
+.cabecalho{
+    padding: 2% 0% 0% 15%;
+}
+
+.cabecalho__menu{
+    display: flex;
+    gap: 80px;
+}
+
+.cabecalho__menu__link{
+    font-family: var(--font-secundaria);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--cor-terciaria);
+    text-decoration: none; /*Elimina o sublinhado do link na página*/
+}
+
+.cabecalho__menu__link:hover{
+    color:var(--cor-terciaria-hover);
+}
+
+.apresentacao {
+   padding:5% 15%; /*Proporciona uma margem para o texto e a imgem não fiquem presos aos cantos das telas*/
+    display: flex; /* or inline-flex */
+    align-items: center;
+    justify-content: space-between;  /*espacamento das secoes onde estao os elementos filhos*/
+    gap: 82px;
+}
+
+.apresentacao__conteudo{
+    width: 50%;
+    display: flex;
+    flex-direction: column; /*para deixar organizado em colunas*/
+    gap: 40px;
+}
+
+.apresentacao__conteudo__titulo{
+    font-size: 2.25rem; /*tamanho da fonte*/
+    font-family: var(--fonte-primaria); /*colagem da fonte no filho correto*/
+}
+
+.apresentacao__conteudo__titulo2{
+    color:var(--cor-terciaria);
+    font-family: var(--fonte-primaria);
+}
+
+.titulo-destaque {
+    color: var(--cor-terciaria);
+}
+
+.apresentacao__conteudo__texto {
+    font-size: 1.5rem;
+    font-family: var(--font-secundaria);
+}
+.apresentacao__conteudo__nome:hover{
+    color: var(--cor-terciaria-hover);
+}
+
+.apresentacao__links{
+    display: flex;
+    flex-direction: column; /* para dispor os botões em colunas*/
+    justify-content: space-between;
+    align-items: center ;
+    gap: 32px;
+}
+
+.apresentacao__links__subtitulo{
+    font-family: var(--fonte-primaria);
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.apresentacao__links__link{
+    /* background-color: #9600AE; para dar cor ao botão*/
+    display: flex;
+    justify-content: center;
+    gap: 16px;    
+    border: 2px solid var(--cor-terciaria);  /* para adicionar apenas as bordas  ao botao*/
+    width: 50%;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 21.5px 0;
+    text-decoration: none;
+    color: var(--cor-secundaria);
+    font-family: var(--font-secundaria);
+}
+
+/* o hover fará a mudança de cores quando o mouse passar em cima do botão*/
+
+.apresentacao__links__link:hover{
+    background-color: var(--cor-primaria-hover);
+    color: var(--cor-secundaria-hover);
+    padding: 3%;
+}
+
+.apresentacao__imagem {
+    width: 50%;
+}
+
+.rodape {
+    padding: 24px;
+    text-align: center;
+    color:var(--cor-primaria);
+    background-color: var(--cor-terciaria);
+    font-family: var(--font-secundaria);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+/*para mudar o tamanho da tela caso aconteça a condição abaixo que é maximo de tela*/
+@media (max-width: 1200px) {
+    .cabecalho{
+        padding: 10% ;
+    }
+
+    .cabecalho__menu{
+        /*não precisa adicionar o display: flex aqui, porque ele já está no código original*/ 
+        justify-content: center;
+    }
+    .apresentacao{
+        flex-direction: column-reverse; /*troca as ordens dos elementos*/
+        padding: 5%;
+    }
+
+    .apresentacao__conteudo{
+        width: auto;
+    }
+}
+
+/*box-sizing: faz com que filho fique dentro do pai*/
+/* height = altura da tela; a altura do viewport onde trnasmite a tela (html)*/
+/*Temos que ter cuidado ao definir px de elementos devido aos diferentes dipositivos que terão acesso ao site*/
+/*flexbox sera a partir do pai <main>, pois nesse projeto os elementos que queremos posicionar estao dentro dele. Ele  colocara os textos em apenas uma linha (row)*/
