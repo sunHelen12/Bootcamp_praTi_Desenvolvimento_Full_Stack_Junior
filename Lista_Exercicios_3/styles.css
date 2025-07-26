@@ -1,0 +1,185 @@
+/* Estilos  */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Exercício 4: CSS Básico e Box Model */
+header {
+    background-color: #333; 
+    color: #fff; 
+    padding: 20px; 
+    margin: 0 0 20px 0; 
+    border-bottom: 5px solid #555; 
+    text-align: center;
+}
+
+main {
+    background-color: #fff; 
+    color: #333; 
+    padding: 20px; 
+    margin: 0 20px; 
+    border: 1px solid #ddd; 
+}
+
+footer {
+    background-color: #333; 
+    color: #fff; 
+    text-align: center;
+    padding: 15px; 
+    margin-top: 20px; 
+    border-top: 5px solid #555; 
+}
+
+/* Exercício 5: Seletores e Propriedades */
+h2 {
+    font-size: 2em; 
+    text-decoration: underline; 
+}
+
+.destaque {
+    font-style: italic; 
+    background-color: #f0f0f0; 
+    padding: 10px;
+}
+
+#importante {
+    border-top: 4px solid #ff0000; 
+    padding-top: 10px;
+}
+
+/* Exercício 3: Estilos do Formulário */
+form div {
+    margin-bottom: 15px;
+}
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+form input, form select, form textarea, form button {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+form button {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Exercício 6: Grid e Flexbox */
+.flex-container {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    padding: 20px;
+}
+
+.grid-gallery {
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.grid-gallery figure {
+    margin: 0;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.grid-gallery img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Media Query para a galeria */
+@media (max-width: 768px) {
+    .grid-gallery {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-gallery {
+        grid-template-columns: 1fr; 
+    }
+}
+
+/* Exercício 7: Menu Hamburger */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4a4a4a;
+    color: white;
+    padding: 0 20px;
+    height: 60px;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    padding: 0 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.hamburger {
+    display: none; 
+    cursor: pointer;
+}
+
+.hamburger .line {
+    width: 30px;
+    height: 3px;
+    background: white;
+    margin: 5px 0;
+}
+
+/* Media Query para o Menu Hamburger */
+@media (max-width: 600px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #4a4a4a;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex; 
+    }
+
+    .nav-links li {
+        padding: 15px 0;
+    }
+
+    .hamburger {
+        display: block; 
+    }
+}

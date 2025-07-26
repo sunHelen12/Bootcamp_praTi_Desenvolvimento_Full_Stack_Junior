@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listas e Navegação</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+     <nav class="main-nav">
+        <div class="logo">Menu</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="listas.html">Listas</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+        </ul>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </nav>
+    <h1>Meus Hobbies</h1>
+    <ul>
+        <li>Ler livros de ficção científica</li>
+        <li>Praticar trekking em montanhas</li>
+        <li>Fotografar a natureza</li>
+        <li>Tocar violão</li>
+        <li>Cozinhar pratos novos</li>
+    </ul>
+
+    <h1>Receita de Bolo Simples</h1>
+    <ol>
+        <li>Pré-aqueça o forno a 180°C.</li>
+        <li>Em uma tigela, misture 2 xícaras de farinha e 1 xícara de açúcar.</li>
+        <li>Adicione 3 ovos, 1/2 xícara de óleo e 1 xícara de leite. Bata bem.</li>
+        <li>Acrescente 1 colher de sopa de fermento em pó.</li>
+        <li>Despeje a massa em uma forma untada e leve ao forno por 40 minutos.</li>
+    </ol>
+
+    <nav>
+        <h2>Links Úteis</h2>
+        <a href="https://www.google.com" target="_blank">Google</a>
+        <a href="https://www.wikipedia.org" target="_blank">Wikipédia</a>
+        <a href="https://github.com" target="_blank">GitHub</a>
+    </nav>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {            
+            navLinks.classList.toggle('active');
+        });
+    </script>    
+
+</body>
+</html>

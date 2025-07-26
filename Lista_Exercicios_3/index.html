@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial - Estrutura Semântica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+     <nav class="main-nav">
+        <div class="logo">Menu</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="listas.html">Listas</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+        </ul>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </nav>
+    <header>
+        <h1>Empresa Solar</h1>
+        <p>Aqui temos de tudo, desde receitas de bolos até filmes.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Missão</h2>
+            <p class="destaque">Nossa missão é fornecer soluções para que as pessoas curtam um todos os materiais de alta qualidade que superem as expectativas  e contribua para um futuro mais divertido.</p>
+        </section>
+        
+        <section>
+            <h2>Visão</h2>
+            <p id="importante">Ser a empresa líder e referência no nosso setor, reconhecida pela excelência, inovação e compromisso com a satisfação do cliente.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>

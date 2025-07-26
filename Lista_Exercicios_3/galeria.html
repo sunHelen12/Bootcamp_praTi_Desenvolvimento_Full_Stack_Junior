@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria com Grid e Flexbox</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+     <nav class="main-nav">
+        <div class="logo">Menu</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="listas.html">Listas</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+        </ul>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </nav>
+    <div class="flex-container">
+        <div class="grid-gallery">
+            <figure>
+                <img src="https://cinemaeseries.com.br/wp-content/uploads/2014/01/The_Matrix.jpg"  alt="Imagem 1">
+                <figcaption>Filme: Matrix</figcaption>
+            </figure>
+            <figure>
+                <img src="https://cinemaeseries.com.br/wp-content/uploads/2017/12/O-Exterminador-do-Futuro-2.jpg"  alt="Imagem 2">
+                <figcaption>Filme: O Exterminador 2</figcaption>
+            </figure>
+            <figure> 
+                <img src="https://cinemaeseries.com.br/wp-content/uploads/2022/02/poderoso-chefao.jpg" alt="Imagem 3">
+                <figcaption>Filme: O Poderoso Chefão</figcaption>
+            </figure>
+            <figure>
+                <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQkUywIUXDjHSQJIaNHYVs08osgBpF5Ot-xmB_omyEZeeRP9Xug"  alt="Imagem 4">
+                <figcaption>Filme: Batman - The Dark Knight</figcaption>
+            </figure>
+            <figure>
+                <img src="https://br.web.img2.acsta.net/c_310_420/pictures/210/240/21024037_20130801203005071.jpg"  alt="Imagem 5">
+                <figcaption>Filme: Hannibal</figcaption>
+            </figure>
+            <figure>
+                <img src="https://upload.wikimedia.org/wikipedia/pt/1/1e/The_Pursuit_of_Happyness.jpg" alt="Imagem 6">
+                <figcaption>Filme: A Procura da Felicidade</figcaption>
+            </figure>
+            <figure>
+                <img src="https://upload.wikimedia.org/wikipedia/pt/a/a8/Up_p%C3%B4ster.jpg"  alt="Imagem 7">
+                <figcaption>Filme: UP</figcaption>
+            </figure>
+            <figure>
+                <img src="https://m.media-amazon.com/images/M/MV5BN2FkMTRkNTUtYTI0NC00ZjI4LWI5MzUtMDFmOGY0NmU2OGY1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Imagem 8">
+                <figcaption>Filme: Shrek</figcaption>
+            </figure>
+        </div>
+    </div>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {          
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
