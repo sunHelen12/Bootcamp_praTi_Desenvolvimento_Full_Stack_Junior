@@ -16,6 +16,11 @@ Este repositório contém as atividades realizadas durante o **Programa de Desen
 * Funções e Recursão
 * Arrays e Objetos Complexos
 
+## ⚙️ Lista de Exercícios 3
+* HTML
+* CSS
+* JavaScript
+
 ## ⚙️ Como Executar os Códigos
 
 ### 1. Clone o repositório:
