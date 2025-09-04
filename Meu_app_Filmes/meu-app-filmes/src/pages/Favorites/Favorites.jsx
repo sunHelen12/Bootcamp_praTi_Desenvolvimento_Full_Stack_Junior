@@ -4,8 +4,6 @@ import MovieCard from '../../components/MovieCard/MovieCard';
 import './Favorites.css';
 
 function Favorites() {
-  // Usamos o nosso hook customizado para ler a lista de 'favorites' do localStorage.
-  // O segundo argumento, [], é o valor inicial caso a chave 'favorites' não exista.
   const [favorites] = useLocalStorage('favorites', []);
 
   return (

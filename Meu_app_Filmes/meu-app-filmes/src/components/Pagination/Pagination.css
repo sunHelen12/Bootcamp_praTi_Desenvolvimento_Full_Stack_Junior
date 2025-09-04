@@ -3,8 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem; /* Espaço entre os botões e o texto */
-  margin: 2rem 0; /* Margem para separar da lista de filmes */
+  gap: 1rem; 
+  margin: 2rem 0; 
   padding: 1rem;
 }
 
@@ -13,7 +13,7 @@
   padding: 0.6rem 1.2rem;
   border: none;
   border-radius: 8px;
-  background-color: var(--primary-color); /* Usando a variável de cor global */
+  background-color: var(--primary-color); 
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -21,19 +21,16 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-/* Efeito ao passar o mouse por cima do botão */
 .pagination-container button:hover {
-  background-color: #0073e6; /* Um tom de azul um pouco mais escuro */
+  background-color: #0073e6; 
 }
 
-/* Estilo para quando o botão estiver desabilitado */
 .pagination-container button:disabled {
   background-color: #333; /* Cinza escuro */
   color: #777;
   cursor: not-allowed;
 }
 
-/* Estilo para o texto "Página X de Y" */
 .pagination-container span {
   font-size: 1.1rem;
   font-weight: 500;

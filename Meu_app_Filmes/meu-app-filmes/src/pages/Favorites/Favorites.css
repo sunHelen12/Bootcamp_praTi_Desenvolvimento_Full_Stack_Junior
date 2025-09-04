@@ -1,13 +1,13 @@
 .favorites-container {
   padding: 2rem;
   color: white;
-  min-height: 100vh; /* ocupa a altura total da tela */
+  min-height: 100vh; 
   display: flex;
   flex-direction: column;
-  align-items: center; /* centraliza horizontal */
-  justify-content: flex-start; /* começa de cima */
-  max-width: 1200px; /* limite de largura igual ao details */
-  margin: 0 auto; /* centraliza no meio da tela */
+  align-items: center; 
+  justify-content: flex-start; 
+  max-width: 1200px; 
+  margin: 0 auto; 
 }
 
 .favorites-container h2 {
@@ -37,7 +37,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-grow: 1; /* ocupa espaço restante para centralizar */
+  flex-grow: 1; 
   text-align: center;
   color: #ccc;
 }
