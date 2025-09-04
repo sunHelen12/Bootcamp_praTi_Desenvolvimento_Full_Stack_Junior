@@ -1,0 +1,48 @@
+.favorites-container {
+  padding: 2rem;
+  color: white;
+  min-height: 100vh; /* ocupa a altura total da tela */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centraliza horizontal */
+  justify-content: flex-start; /* começa de cima */
+  max-width: 1200px; /* limite de largura igual ao details */
+  margin: 0 auto; /* centraliza no meio da tela */
+}
+
+.favorites-container h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: white;
+}
+
+.favorites-container h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: white;
+}
+
+.favorites-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.empty-favorites {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1; /* ocupa espaço restante para centralizar */
+  text-align: center;
+  color: #ccc;
+}
+
+.empty-favorites p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}

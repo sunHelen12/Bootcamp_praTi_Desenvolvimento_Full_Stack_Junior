@@ -1,0 +1,37 @@
+/* :root é usado para declarar variáveis CSS globais. 
+  Isso facilita a manutenção do esquema de cores. 
+  Se quiser mudar a cor primária do site, você só muda em um lugar.
+*/
+:root {
+  --background-color: #141414; /* Um cinza bem escuro */
+  --font-color: #e5e5e5;       /* Um branco suave para o texto */
+  --primary-color: #1e90ff;    /* Azul para links, botões e destaques */
+  --card-background: #2c2c2c;  /* Cor de fundo para os cards */
+}
+
+/*
+  Estilos aplicados diretamente ao <body>, afetando a página inteira.
+*/
+body {
+  margin: 0;
+  display: block; 
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  background-color: var(--background-color);
+  color: var(--font-color);
+}
+
+/*
+  Uma classe de container principal que pode ser usada no App.jsx 
+  para centralizar o conteúdo e garantir que ele não fique colado
+  nas bordas da tela.
+*/
+.main-container {
+  max-width: 1400px; /* Largura máxima para o conteúdo */
+  margin: 2rem auto; /* Centraliza o container na página com margem em cima/baixo */
+  padding: 0 1rem;   /* Adiciona um preenchimento nas laterais para telas menores */
+}
