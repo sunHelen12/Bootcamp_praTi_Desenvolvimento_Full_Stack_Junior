@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio CSS - Versão 2: Simulação de CSS Modules</title>
+    <style>
+      
+        :root {
+            --color-primary: #007bff;
+            --color-primary-hover: #0056b3;
+            --color-text: #212529;
+            --color-background: #f8f9fa;
+            --color-surface: #ffffff;
+            --color-border: #dee2e6;
+            --color-success: #28a745;
+            --color-rating: #ffc107;
+            --color-skeleton: #e0e0e0;
+
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+            --spacing-1: 0.25rem;
+            --spacing-2: 0.5rem;
+            --spacing-3: 0.75rem;
+            --spacing-4: 1rem;
+            --spacing-6: 1.5rem;
+            
+            --radius-md: 0.375rem;
+            --radius-full: 9999px;
+            
+            --transition-duration: 200ms;
+        }
+
+        [data-theme="dark"] {
+            --color-primary: #389bff;
+            --color-primary-hover: #5caeff;
+            --color-text: #f8f9fa;
+            --color-background: #121212;
+            --color-surface: #1e1e1e;
+            --color-border: #444;
+            --color-skeleton: #333;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            transition: background-color var(--transition-duration), color var(--transition-duration);
+            margin: 0;
+        }
+
+        ._Navbar__navbar__x5y6z {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-3) var(--spacing-4);
+            background-color: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+            z-index: 10;
+        }
+        ._Navbar__logo__x5y6z { font-weight: bold; font-size: 1.25rem; }
+        ._Navbar__actions__x5y6z { display: flex; align-items: center; gap: var(--spacing-4); }
+        ._Navbar__themeToggle__x5y6z {
+            background: none; border: none; cursor: pointer;
+            font-size: 1.5rem; color: var(--color-text);
+            padding: var(--spacing-1); border-radius: var(--radius-full);
+        }
+        ._Navbar__themeToggle__x5y6z:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+        ._Navbar__cartBadge__x5y6z { position: relative; font-size: 1.5rem; }
+        ._Navbar__cartCount__x5y6z {
+            position: absolute; top: -5px; right: -10px;
+            background-color: var(--color-primary); color: white;
+            font-size: 0.75rem; font-weight: bold;
+            width: 20px; height: 20px;
+            border-radius: var(--radius-full);
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        ._ProductGrid__grid__a1b2c {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-6);
+            padding: calc(65px + var(--spacing-6)) var(--spacing-4) var(--spacing-6);
+        }
+        @media (min-width: 481px) { ._ProductGrid__grid__a1b2c { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 769px) { ._ProductGrid__grid__a1b2c { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 1025px) { ._ProductGrid__grid__a1b2c { grid-template-columns: repeat(4, 1fr); } }
+
+        ._ProductCard__card__d3e4f {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            display: flex; flex-direction: column;
+            transition: transform var(--transition-duration), box-shadow var(--transition-duration);
+        }
+        ._ProductCard__card__d3e4f:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        ._ProductCard__imageWrapper__d3e4f { aspect-ratio: 1 / 1; background-color: var(--color-skeleton); position: relative; }
+        ._ProductCard__tag__d3e4f {
+            position: absolute; top: var(--spacing-2); right: var(--spacing-2);
+            background-color: var(--color-success); color: white;
+            padding: var(--spacing-1) var(--spacing-2); font-size: 0.8rem;
+            border-radius: var(--radius-md); font-weight: 500;
+        }
+        ._ProductCard__image__d3e4f { width: 100%; height: 100%; object-fit: cover; }
+        ._ProductCard__content__d3e4f { padding: var(--spacing-4); display: flex; flex-direction: column; flex-grow: 1; }
+        ._ProductCard__title__d3e4f {
+            font-size: 1rem; font-weight: 600; line-height: 1.4; height: 2.8em;
+            overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
+            -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; margin-bottom: var(--spacing-2);
+        }
+        ._ProductCard__details__d3e4f { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-3); }
+        ._ProductCard__price__d3e4f { font-size: 1.125rem; font-weight: bold; color: var(--color-primary); }
+        ._ProductCard__rating__d3e4f { display: flex; align-items: center; gap: var(--spacing-1); }
+        ._ProductCard__rating__d3e4f span { color: var(--color-rating); }
+        ._ProductCard__footer__d3e4f { margin-top: auto; }
+
+        ._Button__button__g5h6i {
+            width: 100%; padding: var(--spacing-2) var(--spacing-4);
+            font-size: 0.9rem; font-weight: 600; border-radius: var(--radius-md);
+            border: 1px solid transparent; cursor: pointer;
+            transition: all var(--transition-duration);
+        }
+        ._Button__button__g5h6i:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+        ._Button__button__g5h6i:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        ._Button__solid__g5h6i { background-color: var(--color-primary); color: white; }
+        ._Button__solid__g5h6i:hover:not(:disabled) { background-color: var(--color-primary-hover); }
+        
+        ._Button__outline__g5h6i { background-color: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+        ._Button__outline__g5h6i:hover:not(:disabled) { background-color: var(--color-primary); color: white; }
+
+        ._Skeleton__skeleton__j7k8l {
+            background-color: var(--color-skeleton);
+            border-radius: var(--radius-md);
+            animation: _Skeleton__pulse__j7k8l 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes _Skeleton__pulse__j7k8l { 50% { opacity: 0.5; } }
+        ._Skeleton__image__j7k8l { aspect-ratio: 1 / 1; }
+        ._Skeleton__content__j7k8l { padding: var(--spacing-4); }
+        ._Skeleton__title__j7k8l { height: 1rem; width: 80%; margin-bottom: var(--spacing-3); }
+        ._Skeleton__text__j7k8l { height: 0.8rem; width: 50%; }
+    </style>
+</head>
+<body>
+
+    <nav class="_Navbar__navbar__x5y6z">
+        <div class="_Navbar__logo__x5y6z">Minha Loja</div>
+        <div class="_Navbar__actions__x5y6z">
+            <button class="_Navbar__themeToggle__x5y6z" id="theme-toggle">
+                <span class="sun-icon">☀️</span> <span class="moon-icon" style="display: none;">🌙</span>
+            </button>
+            <div class="_Navbar__cartBadge__x5y6z">🛒<div class="_Navbar__cartCount__x5y6z">3</div></div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="_ProductGrid__grid__a1b2c" id="product-grid"></div>
+    </main>
+    
+    <script>
+        // A lógica JavaScript é idêntica à da versão com CSS Global.
+        // A única diferença é que, em um projeto real, as classes seriam importadas
+        // de arquivos .module.css e aplicadas dinamicamente aos elementos.
+        document.addEventListener('DOMContentLoaded', () => {
+            const products = [
+                { id: 1, title: 'Produto Incrível de Alta Qualidade com Nome Longo para Teste de Elipse', price: 199.90, rating: 4.5, tag: 'Novo', image: 'https://placehold.co/400x400/007bff/white?text=Produto+1' },
+                { id: 2, title: 'Item Moderno e Sofisticado', price: 249.00, rating: 4.8, tag: 'Promo', image: 'https://placehold.co/400x400/28a745/white?text=Produto+2' },
+                { id: 3, title: 'Solução Prática para o Dia a Dia', price: 89.99, rating: 4.2, tag: null, image: 'https://placehold.co/400x400/ffc107/black?text=Produto+3' },
+                { id: 4, title: 'Gadget Tecnológico Essencial', price: 599.50, rating: 5.0, tag: 'Novo', image: 'https://placehold.co/400x400/dc3545/white?text=Produto+4' },
+                { id: 5, title: 'Acessório Elegante e Discreto', price: 120.00, rating: 4.6, tag: 'Promo', image: 'https://placehold.co/400x400/17a2b8/white?text=Produto+5' },
+                { id: 6, title: 'Produto Básico para Começar', price: 49.90, rating: 3.9, tag: null, image: 'https://placehold.co/400x400/6c757d/white?text=Produto+6' },
+            ];
+            
+            const themeToggle = document.getElementById('theme-toggle');
+            const htmlEl = document.documentElement;
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            htmlEl.setAttribute('data-theme', savedTheme);
+            if (savedTheme === 'dark') {
+                document.querySelector('.sun-icon').style.display = 'none';
+                document.querySelector('.moon-icon').style.display = 'inline';
+            }
+            themeToggle.addEventListener('click', () => {
+                const newTheme = htmlEl.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                htmlEl.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                document.querySelector('.sun-icon').style.display = newTheme === 'light' ? 'inline' : 'none';
+                document.querySelector('.moon-icon').style.display = newTheme === 'dark' ? 'inline' : 'none';
+            });
+
+            const productGrid = document.getElementById('product-grid');
+
+            function renderSkeletons() {
+                productGrid.innerHTML = '';
+                for (let i = 0; i < 6; i++) {
+                    productGrid.innerHTML += `
+                        <div class="_ProductCard__card__d3e4f">
+                            <div class="_Skeleton__skeleton__j7k8l _Skeleton__image__j7k8l"></div>
+                            <div class="_Skeleton__content__j7k8l">
+                                <div class="_Skeleton__skeleton__j7k8l _Skeleton__title__j7k8l"></div>
+                                <div class="_Skeleton__skeleton__j7k8l _Skeleton__text__j7k8l"></div>
+                            </div>
+                        </div>`;
+                }
+            }
+            
+            function renderProducts() {
+                productGrid.innerHTML = '';
+                products.forEach(p => {
+                    productGrid.innerHTML += `
+                        <article class="_ProductCard__card__d3e4f">
+                            <div class="_ProductCard__imageWrapper__d3e4f">
+                                <img class="_ProductCard__image__d3e4f" src="${p.image}" alt="${p.title}" loading="lazy">
+                                ${p.tag ? `<span class="_ProductCard__tag__d3e4f">${p.tag}</span>` : ''}
+                            </div>
+                            <div class="_ProductCard__content__d3e4f">
+                                <h3 class="_ProductCard__title__d3e4f">${p.title}</h3>
+                                <div class="_ProductCard__details__d3e4f">
+                                    <span class="_ProductCard__price__d3e4f">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
+                                    <div class="_ProductCard__rating__d3e4f"><span>★</span> ${p.rating.toFixed(1)}</div>
+                                </div>
+                                <div class="_ProductCard__footer__d3e4f">
+                                    <button class="_Button__button__g5h6i _Button__solid__g5h6i">Adicionar</button>
+                                </div>
+                            </div>
+                        </article>`;
+                });
+            }
+
+            renderSkeletons();
+            setTimeout(renderProducts, 2000);
+        });
+    </script>
+</body>
+</html>

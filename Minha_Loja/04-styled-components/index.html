@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio CSS - Versão 4: Styled Components com React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/styled-components/dist/styled-components.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { styled, ThemeProvider, createGlobalStyle } = styled;
+
+ 
+        const lightTheme = {
+            primary: '#007bff',
+            primaryHover: '#0056b3',
+            text: '#212529',
+            background: '#f8f9fa',
+            surface: '#ffffff',
+            border: '#dee2e6',
+            success: '#28a745',
+            rating: '#ffc107',
+            skeleton: '#e0e0e0',
+            shadowSm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+            shadowLg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+            transitionDuration: '200ms'
+        };
+
+        const darkTheme = {
+            primary: '#389bff',
+            primaryHover: '#5caeff',
+            text: '#f8f9fa',
+            background: '#121212',
+            surface: '#1e1e1e',
+            border: '#444',
+            success: '#28a745',
+            rating: '#ffc107',
+            skeleton: '#333',
+            shadowSm: '0 1px 2px 0 rgba(0, 0, 0, 0.2)',
+            shadowLg: '0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3)',
+            transitionDuration: '200ms'
+        };
+  
+        const GlobalStyle = createGlobalStyle`
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+                background-color: ${props => props.theme.background};
+                color: ${props => props.theme.text};
+                transition: background-color ${props => props.theme.transitionDuration}, color ${props => props.theme.transitionDuration};
+            }
+        `;
+
+       
+        const StyledNavbar = styled.nav`
+            position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.75rem 1rem;
+            background-color: ${props => props.theme.surface};
+            border-bottom: 1px solid ${props => props.theme.border};
+            box-shadow: ${props => props.theme.shadowSm};
+            transition: background-color ${props => props.theme.transitionDuration}, border-color ${props => props.theme.transitionDuration};
+        `;
+        
+        const ThemeToggleButton = styled.button`
+            background: none; border: none; cursor: pointer;
+            font-size: 1.5rem; color: ${props => props.theme.text};
+            padding: 0.25rem; border-radius: 9999px;
+            &:focus-visible { outline: 2px solid ${props => props.theme.primary}; outline-offset: 2px; }
+        `;
+
+        const ProductGridContainer = styled.div`
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: calc(65px + 1.5rem) 1rem 1.5rem;
+            @media (min-width: 481px) { grid-template-columns: repeat(2, 1fr); }
+            @media (min-width: 769px) { grid-template-columns: repeat(3, 1fr); }
+            @media (min-width: 1025px) { grid-template-columns: repeat(4, 1fr); }
+        `;
+
+        const Card = styled.article`
+            background-color: ${props => props.theme.surface};
+            border: 1px solid ${props => props.theme.border};
+            border-radius: 0.375rem;
+            box-shadow: ${props => props.theme.shadowSm};
+            overflow: hidden;
+            display: flex; flex-direction: column;
+            transition: transform ${props => props.theme.transitionDuration}, box-shadow ${props => props.theme.transitionDuration};
+            &:hover {
+                transform: translateY(-4px);
+                box-shadow: ${props => props.theme.shadowLg};
+            }
+        `;
+
+        const CardImageWrapper = styled.div`
+            aspect-ratio: 1 / 1;
+            background-color: ${props => props.theme.skeleton};
+            position: relative;
+        `;
+        
+        const CardImage = styled.img`
+            width: 100%; height: 100%; object-fit: cover;
+        `;
+        
+        const CardContent = styled.div`
+            padding: 1rem; display: flex; flex-direction: column; flex-grow: 1;
+        `;
+
+        const CardTitle = styled.h3`
+            font-size: 1rem; font-weight: 600; line-height: 1.4; height: 2.8em;
+            overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
+            -webkit-line-clamp: 2; -webkit-box-orient: vertical; margin-bottom: 0.5rem;
+        `;
+
+        const StyledButton = styled.button`
+            width: 100%; padding: 0.5rem 1rem; font-size: 0.9rem; font-weight: 600;
+            border-radius: 0.375rem; cursor: pointer;
+            transition: all ${props => props.theme.transitionDuration};
+            border: 1px solid ${props => (props.variant === 'outline' ? props.theme.primary : 'transparent')};
+            background-color: ${props => (props.variant === 'solid' ? props.theme.primary : 'transparent')};
+            color: ${props => (props.variant === 'solid' ? 'white' : props.theme.primary)};
+
+            &:hover:not(:disabled) {
+                background-color: ${props => (props.variant === 'solid' ? props.theme.primaryHover : props.theme.primary)};
+                color: white;
+            }
+            &:focus-visible { outline: 2px solid ${props => props.theme.primary}; outline-offset: 2px; }
+            &:disabled { opacity: 0.5; cursor: not-allowed; }
+        `;
+
+        const SkeletonPulse = styled.div`
+             background-color: ${props => props.theme.skeleton};
+             border-radius: 0.25rem;
+             animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+             @keyframes pulse { 50% { opacity: 0.5; } }
+        `;
+
+     
+        const ProductCard = ({ product }) => (
+            <Card>
+                <CardImageWrapper>
+                    <CardImage src={product.image} alt={product.title} loading="lazy" />
+                    {product.tag && <span style={{position:'absolute', top:'0.5rem', right:'0.5rem', backgroundColor: lightTheme.success, color:'white', padding:'0.25rem 0.5rem', fontSize:'0.8rem', borderRadius:'0.375rem'}}>{product.tag}</span>}
+                </CardImageWrapper>
+                <CardContent>
+                    <CardTitle>{product.title}</CardTitle>
+                    <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'0.75rem'}}>
+                        <span style={{fontSize:'1.125rem', fontWeight:'bold', color:lightTheme.primary}}>R$ {product.price.toFixed(2).replace('.', ',')}</span>
+                        <div style={{display:'flex', alignItems:'center', gap:'0.25rem', color: lightTheme.rating}}><span>★</span>{product.rating.toFixed(1)}</div>
+                    </div>
+                    <div style={{marginTop:'auto'}}>
+                       <StyledButton variant="solid">Adicionar</StyledButton>
+                    </div>
+                </CardContent>
+            </Card>
+        );
+
+        const SkeletonCard = () => (
+            <Card>
+                <CardImageWrapper />
+                <CardContent>
+                    <SkeletonPulse style={{height:'1rem', width:'80%', marginBottom:'0.75rem'}} />
+                    <SkeletonPulse style={{height:'0.8rem', width:'50%'}} />
+                </CardContent>
+            </Card>
+        );
+
+
+        const App = () => {
+            const [theme, setTheme] = useState('light');
+            const [loading, setLoading] = useState(true);
+
+            useEffect(() => {
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                setTheme(savedTheme);
+            }, []);
+
+            useEffect(() => {
+                const timer = setTimeout(() => setLoading(false), 2000);
+                return () => clearTimeout(timer); // Limpa o timer se o componente desmontar
+            }, []);
+
+            const toggleTheme = () => {
+                const newTheme = theme === 'light' ? 'dark' : 'light';
+                setTheme(newTheme);
+                localStorage.setItem('theme', newTheme);
+            };
+
+            const products = [
+                { id: 1, title: 'Produto Incrível de Alta Qualidade com Nome Longo para Teste de Elipse', price: 199.90, rating: 4.5, tag: 'Novo', image: 'https://placehold.co/400x400/007bff/white?text=Produto+1' },
+                { id: 2, title: 'Item Moderno e Sofisticado', price: 249.00, rating: 4.8, tag: 'Promo', image: 'https://placehold.co/400x400/28a745/white?text=Produto+2' },
+                { id: 3, title: 'Solução Prática para o Dia a Dia', price: 89.99, rating: 4.2, tag: null, image: 'https://placehold.co/400x400/ffc107/black?text=Produto+3' },
+                { id: 4, title: 'Gadget Tecnológico Essencial', price: 599.50, rating: 5.0, tag: 'Novo', image: 'https://placehold.co/400x400/dc3545/white?text=Produto+4' },
+                { id: 5, title: 'Acessório Elegante e Discreto', price: 120.00, rating: 4.6, tag: 'Promo', image: 'https://placehold.co/400x400/17a2b8/white?text=Produto+5' },
+                { id: 6, title: 'Produto Básico para Começar', price: 49.90, rating: 3.9, tag: null, image: 'https://placehold.co/400x400/6c757d/white?text=Produto+6' },
+            ];
+
+            return (
+                <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+                    <GlobalStyle />
+                    <StyledNavbar>
+                        <div style={{fontWeight: 'bold', fontSize:'1.25rem'}}>Minha Loja</div>
+                        <div style={{display:'flex', alignItems:'center', gap:'1rem'}}>
+                             <ThemeToggleButton onClick={toggleTheme} aria-label="Alternar tema">
+                                {theme === 'light' ? '🌙' : '☀️'}
+                             </ThemeToggleButton>
+                             <div style={{position:'relative', fontSize:'1.5rem'}}>
+                                🛒
+                                <div style={{position:'absolute', top:'-5px', right:'-10px', width:'20px', height:'20px', backgroundColor:lightTheme.primary, color:'white', fontSize:'0.75rem', fontWeight:'bold', borderRadius:'9999px', display:'flex', alignItems:'center', justifyContent:'center'}}>3</div>
+                             </div>
+                        </div>
+                    </StyledNavbar>
+                    <main>
+                        <ProductGridContainer>
+                            {loading 
+                                ? Array.from({ length: 6 }).map((_, index) => <SkeletonCard key={index} />)
+                                : products.map(product => <ProductCard key={product.id} product={product} />)
+                            }
+                        </ProductGridContainer>
+                    </main>
+                </ThemeProvider>
+            );
+        };
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<App />);
+    </script>
+</body>
+</html>
